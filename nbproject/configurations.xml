@@ -39,10 +39,14 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <standard>3</standard>
+        </cTool>
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>-lbcm2835</linkerOptionItem>
             <linkerOptionItem>-lwiringPi</linkerOptionItem>
+            <linkerOptionItem>-lwiringPiDev</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

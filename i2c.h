@@ -11,9 +11,9 @@
 #include <bcm2835.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdint.h>
 
-int test();
+void initI2CConnection();
+uint8_t * getSensorData();
 
 #endif

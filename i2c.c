@@ -75,7 +75,7 @@
 #define MAX_LEN 32 //max lenght of len
 
 
-char wbuf[MAX_LEN];
+char wbuf[MAX_LEN] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 typedef enum {
     NO_ACTION,
     I2C_BEGIN,
@@ -83,8 +83,8 @@ typedef enum {
 } i2c_init;
 uint8_t  init = I2C_BEGIN;
 uint16_t clk_div = BCM2835_I2C_CLOCK_DIVIDER_148;
-uint8_t slave_address = 0x40;
-uint32_t len = 1;
+uint8_t slave_address = 0x32;
+uint32_t len = 8;
 uint8_t  mode = MODE_READ;
 
 /*
@@ -104,50 +104,23 @@ int comparse(int argc, char **argv) {
 }
 */
 
-char buf[MAX_LEN];
-int i;
-uint8_t data;
+#define len 8
+#define addr 0x32
 
-int test() {
-    printf("Running ... \n");
-    
-    // parse the command line
-    //if (comparse(argc, argv) == EXIT_FAILURE) return showusage (EXIT_FAILURE);
-    if (!bcm2835_init()) return 1;
-      
-    // I2C begin if specified    
-    if (init == I2C_BEGIN) bcm2835_i2c_begin();
-    // If len is 0, no need to continue, but do I2C end if specified
-    if (len == 0) {
-         if (init == I2C_END) bcm2835_i2c_end();
-         printf("... done!\n");
-         return EXIT_SUCCESS;
-    }
-    bcm2835_i2c_setSlaveAddress(slave_address);
-    bcm2835_i2c_setClockDivider(clk_div);
-    fprintf(stderr, "Clock divider set to: %d\n", clk_div);
-    fprintf(stderr, "len set to: %d\n", len);
-    fprintf(stderr, "Slave address set to: %d\n", slave_address);   
-    
-    if (mode == MODE_READ) {
-        for (i=0; i<MAX_LEN; i++) buf[i] = 'n';
-        data = bcm2835_i2c_read(buf, len);
-        printf("Read Result = %d\n", data);   
-        for (i=0; i<MAX_LEN; i++) {
-                if(buf[i] != 'n') printf("Read Buf[%d] = %x\n", i, buf[i]);
-        }    
-    }
-    if (mode == MODE_WRITE) {
-        data = bcm2835_i2c_write(wbuf, len);
-        printf("Write Result = %d\n", data);
-    }   
-    // This I2C end is done after a transfer if specified
-    if (init == I2C_END) bcm2835_i2c_end();   
-    bcm2835_close();
-    printf("... done!\n");
-    return 0;
+char data[len];
+
+
+void initI2CConnection(){
+	bcm2835_init();
+	bcm2835_i2c_begin();
+	bcm2835_i2c_setSlaveAddress(addr);
 }
 
+
+uint8_t * getSensorData() {
+		bcm2835_i2c_read(data, len);
+		return data;
+}
 
 
 
