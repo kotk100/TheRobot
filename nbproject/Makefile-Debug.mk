@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/i2c.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/pca9685.o
+	${OBJECTDIR}/I2C.o \
+	${OBJECTDIR}/PCA9685.o \
+	${OBJECTDIR}/arduino.o \
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -54,7 +55,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lbcm2835 -lwiringPi -lwiringPiDev
+LDLIBSOPTIONS=-lbcm2835 -lwiringPi -lwiringPiDev -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -64,20 +65,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/therobot: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/therobot ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/i2c.o: i2c.c 
+${OBJECTDIR}/I2C.o: I2C.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/i2c.o i2c.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2C.o I2C.c
+
+${OBJECTDIR}/PCA9685.o: PCA9685.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PCA9685.o PCA9685.c
+
+${OBJECTDIR}/arduino.o: arduino.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arduino.o arduino.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
-
-${OBJECTDIR}/pca9685.o: pca9685.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/pca9685.o pca9685.c
 
 # Subprojects
 .build-subprojects:

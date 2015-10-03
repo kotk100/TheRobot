@@ -4,8 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>i2c.h</itemPath>
-      <itemPath>pca9685.h</itemPath>
+      <itemPath>I2C.h</itemPath>
+      <itemPath>PCA9685.h</itemPath>
+      <itemPath>arduino.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,9 +15,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>i2c.c</itemPath>
+      <itemPath>I2C.c</itemPath>
+      <itemPath>PCA9685.c</itemPath>
+      <itemPath>arduino.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>pca9685.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -47,18 +49,23 @@
             <linkerOptionItem>-lbcm2835</linkerOptionItem>
             <linkerOptionItem>-lwiringPi</linkerOptionItem>
             <linkerOptionItem>-lwiringPiDev</linkerOptionItem>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="i2c.c" ex="false" tool="0" flavor2="0">
+      <item path="I2C.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="i2c.h" ex="false" tool="3" flavor2="0">
+      <item path="I2C.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PCA9685.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PCA9685.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="arduino.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="arduino.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pca9685.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pca9685.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -81,15 +88,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="i2c.c" ex="false" tool="0" flavor2="0">
+      <item path="I2C.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="i2c.h" ex="false" tool="3" flavor2="0">
+      <item path="I2C.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PCA9685.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="PCA9685.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="arduino.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="arduino.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pca9685.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pca9685.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
