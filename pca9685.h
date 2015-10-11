@@ -23,8 +23,22 @@
 
 #ifndef _PCA9685_H
 #define _PCA9685_H
+
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#include <linux/i2c.h>
+#include <linux/i2c-dev.h>
+#include <stdio.h>      /* Standard I/O functions */
+#include <fcntl.h>
+#include <syslog.h>		/* Syslog functionallity */
 #include <inttypes.h>
-#include "I2C.h"
+#include <errno.h>
+#include <math.h>
+#include <bcm2835.h>
+#include <pthread.h>
+#include <string.h>
+
 // Register Definitions
 
 #define MODE1 0x00			//Mode  register  1
@@ -45,7 +59,10 @@
 #define ALLLED_OFF_H 0xFD	//load all the LEDn_OFF registers, byte 1 (turn 8-15 channels off)
 #define PRE_SCALE 0xFE		//prescaler for output frequency
 #define CLOCK_FREQ 25000000.0 //25MHz default osc clock
+#define BUFFER_SIZE 0x01  //1 byte buffer
 //! Main class that exports features for PCA9685 chip
+
+void openfd();
 
 void PCA9685(int,int);
 
@@ -54,5 +71,18 @@ void setPWMOnOff(uint8_t, int, int);
 void setPWM(uint8_t, int);
 int getPWM(uint8_t);
 
+void initI2CConnection();
+uint8_t * getSensorData();
+void *sensorDataUpdateBegin();
+
+
 #endif
+//
+
+
+
+void servoControl(uint8_t servo, int angle);
+
+
+
 

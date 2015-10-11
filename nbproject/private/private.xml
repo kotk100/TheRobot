@@ -8,8 +8,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/main.c</file>
-            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/i2c.h</file>
-            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/i2c.c</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/PCA9685.h</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/arduino.c</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/arduino.h</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/I2C.h</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/PCA9685.c</file>
+            <file>file:/C:/Users/Ziga/Documents/NetBeansProjects/TheRobot/I2C.c</file>
         </group>
     </open-files>
 </project-private>

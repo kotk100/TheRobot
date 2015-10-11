@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/I2C.o \
 	${OBJECTDIR}/PCA9685.o \
-	${OBJECTDIR}/arduino.o \
 	${OBJECTDIR}/main.o
 
 
@@ -74,11 +73,6 @@ ${OBJECTDIR}/PCA9685.o: PCA9685.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PCA9685.o PCA9685.c
-
-${OBJECTDIR}/arduino.o: arduino.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arduino.o arduino.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

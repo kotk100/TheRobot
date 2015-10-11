@@ -2,18 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include "arduino.h"
 #include "PCA9685.h"
 
 
 
 int main(void)
 {
-	pthread_t sensorData;
-	if(pthread_create(&sensorData, NULL, sensorDataUpdateBegin, NULL))
-		fprintf(stderr, "ERROR creating sensorData thread");
-			
 /*
+	pthread_t sensorData;
+ *	int temp = pthread_create(&sensorData, NULL, sensorDataUpdateBegin, NULL);
+	if(temp){
+		fprintf(stderr, "ERROR creating sensorData thread");
+ *		exit(-1);
+ *	}
+*/
+			
 	PCA9685(1, 0x40);
 	while(1){
 		setPWM(5, 307);
@@ -27,7 +30,8 @@ int main(void)
 		delay(2000);
 		fprintf(stderr, "en cikel");
 	}
-*/
 	
+/*
 	pthread_exit(NULL);
+*/
 }
